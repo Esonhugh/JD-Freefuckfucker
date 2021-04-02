@@ -8,14 +8,16 @@ POC/EXP of [JD-Freefuck](https://www.pwnwiki.org/index.php?title=JD-FreeFuck_%E5
 ``` 
 python JD-Freefuckfucker.py -h 
 
-usage: JD-Freefuckfucker.py [-h] [-u url] [-c command]
+usage: JD-Freefuckfucker.py [-h] [-U url] [-c command] [-u username] [-p password]
 
 this is the EXP of JD fuck
 
 optional arguments:
-  -h, --help  show this help message and exit
-  -u url      url there, e.g: http://127.0.0.1:5678/
-  -c command  execute command, e.g: ls
+  -h, --help   show this help message and exit
+  -U url       url there, e.g: http://127.0.0.1:5678/
+  -c command   execute command, e.g: ls
+  -u username  custom username of panel(optional)
+  -p password  custom password of panel(optional)
 
 ```
 
