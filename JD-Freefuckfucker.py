@@ -98,7 +98,6 @@ if __name__ == "__main__" :
 
     # print(sys.argv[1:])
     args = vars( parser.parse_args(sys.argv[1:]) )
-    print(args)
     if isset("U",args):
         url = args["U"]
     else:
